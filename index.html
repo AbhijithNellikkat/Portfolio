@@ -710,7 +710,7 @@
         </div>
       </div>
 
-      <form action="" id="contact-form"   class=" mt-4 php-email-form">
+      <form action="#" id="contact-form" name="form1"   class=" mt-4 php-email-form">
         <div class="row">
           <div class="col-md-6 form-group">
             <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -730,7 +730,7 @@
           <div class="error-message"></div>
           <div class="sent-message">Your message has been sent. Thank you!</div>
         </div>
-        <div class="text-center"><button type="submit">Send Message</button></div>
+        <div class="text-center"><button type="submit" onclick="validateEmail(document.form1.email)">Send Message</button></div>
       </form>
 
     </div>
@@ -758,23 +758,35 @@
 
 
         <script>
-        $("#contact-form").submit((e)=>{
-            e.preventDefault()
-            $.ajax({
-                url:"https://script.google.com/macros/s/AKfycbxA80H-VDrrKOBz64SYFh-CxUv5iyY9cRIau68AV2avVVbvWZlu5Y0A7bO-3-kfN6XT/exec",
-                data:$("#contact-form").serialize(),
-                method:"post",
-                success:function (response){
-                    alert("Form submitted successfully")
-                    window.location.reload()
-                    //window.location.href="https://google.com"
-                },
-                error:function (err){
-                    alert("Something Error")
-    
-                }
-            })
-        })
+
+          function validateEmail(inputText) {
+            var mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if (inputText.value.match(mailFormat)) {
+              alert("Form submited");
+              $("#contact-form").submit((e)=>{
+                  e.preventDefault()
+                  $.ajax({
+                      url:"https://script.google.com/macros/s/AKfycbxA80H-VDrrKOBz64SYFh-CxUv5iyY9cRIau68AV2avVVbvWZlu5Y0A7bO-3-kfN6XT/exec",
+                      data:$("#contact-form").serialize(),
+                      method:"post",
+                      success:function (response){
+                          alert("Form submitted successfully")
+                          window.location.reload()
+                          //window.location.href="https://google.com"
+                      },
+                      error:function (err){
+                          alert("Something Error")
+          
+                      }
+                  })
+              })
+              return true;
+            } else {
+              alert("Invalid address!");
+              return false;
+            }
+          }
+       
     </script>
 
 </body>
