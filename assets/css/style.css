@@ -21,7 +21,7 @@ body::before {
   content: "";
   position: fixed;
   /* background: #040404 url("https://images.unsplash.com/photo-1618022325802-7e5e732d97a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=448&q=80") top right no-repeat; */
-  background-size: cover;
+  /* background-size: cover; */
   background-color: black;
   left: 0;
   right: 0;
